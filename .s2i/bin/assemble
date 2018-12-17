@@ -13,5 +13,3 @@ else
   mvn clean install
 fi
 
-# Fix source directory permissions
-fix-permissions ./
