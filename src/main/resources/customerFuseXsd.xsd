@@ -1,0 +1,302 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc" jaxb:version="1.0" xmlns:tns="http://resource.integration.esb.intl.scholastic.com" elementFormDefault="qualified" targetNamespace="http://resource.integration.esb.intl.scholastic.com">
+
+			<!-- FORCE ALL CLASSES IMPLEMENTS SERIALIZABLE -->
+				<xsd:annotation>
+					<xsd:appinfo>
+						<jaxb:globalBindings generateIsSetMethod="true">
+							<xjc:serializable uid="1" />
+							<!-- xjc:superClass name="com.scholastic.intl.esb.integration.resource.XmlSuperClass" / -->
+						</jaxb:globalBindings>
+					</xsd:appinfo>
+				</xsd:annotation>
+
+
+			<xsd:element name="passport">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" name="email" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="password" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="account" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>	
+			
+			<xsd:complexType name="customerContacts">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="unbounded" name="customerContact">
+					<xsd:complexType>
+					<xsd:sequence>
+					<xsd:element minOccurs="0" name="entityid" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="title" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="email" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="phone" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="subsidiary" type="xsd:string"></xsd:element>
+					<!--xsd:element minOccurs="0" name="contactrole" type="xsd:string"></xsd:element-->
+					</xsd:sequence>
+				</xsd:complexType>
+				</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="addressData">
+                <xsd:sequence>
+					<xsd:element minOccurs="0" name="billingaddressindicator" type="xsd:boolean"></xsd:element>
+					<xsd:element minOccurs="0" name="shippingaddressindicator" type="xsd:boolean"></xsd:element>
+					<xsd:element minOccurs="0" name="addr1" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="addr2" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="addr3" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custrecord_addr_4" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="city" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="state" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="zip" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="country" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+            </xsd:complexType>
+			
+			<xsd:complexType name="addressDataList">
+                <xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="unbounded" name="addressData" type="tns:addressData"></xsd:element>
+				</xsd:sequence>
+            </xsd:complexType>
+			
+			<xsd:complexType name="childCustData">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="parent" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="companyname" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="category" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="phone" type="xsd:string"></xsd:element>					
+					<xsd:element minOccurs="0" name="subsidiary" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="email" type="xsd:string"></xsd:element>					
+					<xsd:element minOccurs="0" name="fax" type="xsd:string"></xsd:element>	
+					<xsd:element minOccurs="1" name="addressDataList" type="tns:addressDataList"></xsd:element>
+					<xsd:element minOccurs="0" name="isperson" type="xsd:boolean"></xsd:element>
+					<xsd:element minOccurs="0" name="shippingitem" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custentity_zonenumber" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="accountnumber" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="terms" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="currency" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="creditlimit" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="vatregnumber" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custentitylegacy_customer_id_custom" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custentity_rewardsearner" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custentity_decile" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="custentity_moe_id" type="xsd:string"></xsd:element>
+					<!--Added rewardholder field-->
+					<xsd:element minOccurs="0" name="custentity_rewardholder" type="xsd:string"></xsd:element>
+					<!--Added rewardholder field-->
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="customerContacts" type="tns:customerContacts"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:complexType name="updateChildCustData">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" name="customerinternalid" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="companyname" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="phone" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="email" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="fax" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="inactiveflag" type="xsd:string"></xsd:element>
+					<xsd:element minOccurs="0" name="addressDataList" type="tns:addressDataList"></xsd:element>
+					<xsd:element minOccurs="0" name="custentity_rewardsearner" type="xsd:string"></xsd:element>	
+					<xsd:element minOccurs="0" name="rewardsband" type="xsd:string"></xsd:element>	
+					<!--changes start for BookFair -->
+					<xsd:element minOccurs="0" name="subsidiary" type="xsd:string"></xsd:element>					
+					<!--changes end for BookFair -->
+					<!--Added rewardholder field-->
+					<xsd:element minOccurs="0" name="custentity_rewardholder" type="xsd:string"></xsd:element>
+					<!--Added rewardholder field-->			
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			<xsd:complexType name="parentCustData">					
+						<xsd:sequence>
+							<xsd:element name="addr1" type="xsd:string"/>
+							<xsd:element name="addr2" type="xsd:string"/>
+							<xsd:element name="city" type="xsd:string"/>
+							<xsd:element name="country" type="xsd:string"/>
+							<xsd:element name="email" type="xsd:string"/>
+							<xsd:element name="fax" type="xsd:string"/>
+							<xsd:element name="mobile" type="xsd:string"/>
+							<xsd:element name="nSInternalID" type="xsd:int" minOccurs="0"/>
+							<xsd:element name="name" type="xsd:string"/>
+							<xsd:element name="phone" type="xsd:string"/>
+							<xsd:element name="salesRep" type="xsd:string"/>
+							<xsd:element name="state" type="xsd:string"/>
+							<xsd:element name="territory" type="xsd:string"/>
+							<xsd:element name="url" type="xsd:string"/>
+							<xsd:element name="zip" type="xsd:string"/>
+							<xsd:element name="snipmemberid" type="xsd:string"/>
+							<xsd:element name="category" type="xsd:string"/>
+							<xsd:element name="MemberStatus" type="xsd:string"/>
+							<xsd:element name="SnippCountryCode" type="xsd:string"/>
+							<xsd:element name="destinationSystem" type="xsd:string"/>
+							<!-- Changes starts for BookFair-->
+							<xsd:element name="externalid" type="xsd:string"/>
+							<xsd:element name="subsidiary" type="xsd:string"/>
+							<xsd:element name="legacyId" type="xsd:string"/>
+							<!-- Changes ends for BookFair -->
+							<!-- RVA field additions -->
+							<xsd:element name="addr3" type="xsd:string"/>
+							<xsd:element name="countrycreatedate" type="xsd:string"/>
+							<xsd:element name="ctrycurrency" type="xsd:string"/>
+							<xsd:element name="ctryid" type="xsd:string"/>
+							<xsd:element name="ctryisoCode" type="xsd:string"/>
+							<xsd:element name="ctryname" type="xsd:string"/>
+							<xsd:element name="ctrystatus" type="xsd:string"/>
+							<xsd:element name="ctrytimeZone" type="xsd:string"/>
+							<xsd:element name="ctryupdatedDate" type="xsd:string"/>
+							<xsd:element name="utc" type="xsd:string"/>
+							<xsd:element name="createddate" type="xsd:string"/>
+							<xsd:element name="status" type="xsd:string"/>
+							<xsd:element name="updatedDate" type="xsd:string"/>
+							<xsd:element name="custcdate" type="xsd:string"/>
+							<xsd:element name="extaddid" type="xsd:string"/>
+							<xsd:element name="id" type="xsd:string"/>
+							<xsd:element name="orgId" type="xsd:string"/>
+							<xsd:element name="orgName" type="xsd:string"/>
+							<xsd:element name="rewardholder" type="xsd:string"/>
+							<xsd:element name="scholasticSubCode" type="xsd:string"/>
+							<xsd:element name="custstatus" type="xsd:string"/>
+							<xsd:element name="userstatus" type="xsd:string"/>
+							<xsd:element name="ucreatedDate" type="xsd:string"/>
+							<xsd:element name="uid" type="xsd:string"/>
+							<xsd:element name="uname" type="xsd:string"/>
+							<xsd:element name="ustatus" type="xsd:string"/>
+							<xsd:element name="uupdatedDate" type="xsd:string"/>
+							<xsd:element name="addressee" type="xsd:string"/>
+							<xsd:element name="addid" type="xsd:string"/>
+							<!-- RVA field additions end -->
+						</xsd:sequence>
+			</xsd:complexType>		
+			
+			<xsd:element name="getChildCustomerIdRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" name="externalId" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="1" maxOccurs="1" name="transactionid" type="xsd:string"></xsd:element>
+					</xsd:sequence>						
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="getChildCustomerIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" name="Status" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="internalId" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="companyName" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="ErrorCode" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string"></xsd:element>
+					</xsd:sequence>						
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="insertChildCustToNSRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" name="externalId" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="1" maxOccurs="1" name="childCustData"
+							type="tns:childCustData">							
+						</xsd:element>	
+						<xsd:element minOccurs="1" maxOccurs="1" name="transactionid" type="xsd:string"></xsd:element>
+					</xsd:sequence>						
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="insertChildCustToNSResponse">
+				<xsd:complexType>
+                <xsd:sequence>
+						<xsd:element minOccurs="0" name="Status" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+            </xsd:complexType>
+			</xsd:element>
+			
+			<!-- <xsd:element name="insertChildCustToNSResponseList">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="insertChildCustToNSResponse" type="tns:insertChildCustToNSResponse"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element> -->
+			
+			<xsd:element name="updateChildCustToNSRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="updateChildCustData"
+							type="tns:updateChildCustData">							
+						</xsd:element>	
+						<xsd:element minOccurs="1" maxOccurs="1" name="transactionid" type="xsd:string"></xsd:element>
+					</xsd:sequence>						
+				</xsd:complexType>
+			</xsd:element>			
+			
+			<xsd:element name="updateChildCustToNSResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Status" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			
+			<xsd:element name="addParentCustToJADERequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="parentCustData"
+							type="tns:parentCustData"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:complexType name="targetSystemOutputDetails">
+                <xsd:sequence>
+						<xsd:element minOccurs="0" name="systemname" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="status" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="memberid" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="errorcode" type="xsd:string"></xsd:element>
+						<xsd:element minOccurs="0" name="errorresponse" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+            </xsd:complexType>
+			
+			<xsd:element name="addParentCustToJADEResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="targetSystemOutputDetails"
+							type="tns:targetSystemOutputDetails"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+				
+			</xsd:element>
+			<xsd:element name="updParentCustToJADERequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="parentCustData"
+							type="tns:parentCustData"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="updParentCustToJADEResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="targetSystemOutputDetails"
+							type="tns:targetSystemOutputDetails"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:element name="Fault">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element minOccurs="0" name="faultcode" type="xsd:string"/>
+						<xsd:element minOccurs="0" name="faultstring" type="xsd:string"/>
+                        <xsd:element minOccurs="0" name="detail" type="xsd:string"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+		</xsd:schema>
+		
+		
+		
+		
+		
+		

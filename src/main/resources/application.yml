@@ -1,0 +1,127 @@
+spring:
+  profiles:
+    active: ${SCH_ENV}
+  application:
+    name: anz-customer-interface
+  activemq:
+    #broker-url: failover:(tcp://10.45.151.190:61616,tcp://10.45.152.99:61616,tcp://localhost:61616)
+    #broker-url: tcp://localhost:61616
+    #broker-url: tcp://fs-is-perf2-activemq.service.aws-us-east.consul:61616
+    broker-url: tcp://54.213.203.229:61616
+    packages:
+      trust-all: true
+      #trusted: com.stylrplus.api.model
+    pool:
+      enabled: true
+      configuration:
+        max-connections: 10 
+
+endpoints:
+  jmx:
+    enabled: true
+    unique-names: true
+
+server:
+  port: 8080
+  #ssl:
+    #key-store: keystore.jks
+    #key-store-password: 
+  servlet-path: /customer/system
+
+cxf:
+  path: /
+  servlet.init:
+    service-list-path: /info
+  jaxrs:
+    component-scan: true
+    classes-scan-packages: org.apache.cxf.jaxrs.swagger,org.apache.cxf.metrics,com.fasterxml.jackson.jaxrs.json
+
+Qendpoint:
+  nzQEndpoint: intl.ANZ.inbound
+  anzFailureQEndpoint: intl.ANZ.failure
+
+Mail:
+  recipient: integration_team@scholastic.onmicrosoft.com
+  from: DoNotReply-IntegrationTeam@scholastic.com
+  #serverUrl: smtp://smtp.gmail.com:587?username=mypoc220@gmail.com&password=Mypoc@220&mail.smtp.auth=true&mail.smtp.starttls.enable=true
+  serverUrl: smtp://ses-relay.scholastic.tech:25
+
+Netsuite:
+  Item:
+    email: intl_ws02_netsuite@scholastic.com
+    account: 3479023_SB2
+    password: SchNetS@2016!K
+
+valid:
+  token: ADS_SCHOLASTIC_INTEGRATION_WITH_NETSUITE
+
+#SnippEndpoint: https://uat.snipp.ie/scholasticmigrationtest/member
+#RvaEndpoint: https://rva-qa.scholasticlearningzone.com/users
+RvaEndpoint: https://nonprod.api.scholastic.com/rva_qa/1.0/users
+JadeEndpoint: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+JadeEndpointAus: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerAusWebService/jadehttp.dll?NetsuiteCustomerAusWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+SnippAuthToken: 78ca6121-763c-41c6-8dfe-d73e761b9989;https://uat.snipp.ie/scholasticmigrationtest/member;Thu Jan 07 2016 12:30:35 GMT+0530 (India Standard Time);iboHl0/GC5bkDG0gKexkyi2wgHcaZzKZ9KO3aPJ/n1w=
+InsertCustomerUpdateEndpoint: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+#SnippEndpointDynamic: http://uat.snipp.ie/scholasticmigrationtest/member
+SnippAuthTokenPrefixDynamic: https://uat.snipp.ie/scholasticapi/member
+RvaAuthToken: Bearer dfbc42b5e67484ec78acdd5661ee0e8
+
+AuSubsidiary: 37
+
+InterfaceName: anz-customer-interface
+
+snapshot:
+  version: @snapshot.version@
+Environment: DEV
+
+
+
+---
+spring:
+  profiles: uat
+  activemq:
+    #broker-url: failover:(tcp://is-int1-activemq1.api.scholastic.com:61616,tcp://is-int1-activemq2.api.scholastic.com:61616,tcp://is-int1-activemq3.api.scholastic.com:61616)
+    broker-url: tcp://is-qa1-activemq.api.scholastic.com:61616
+Environment: UAT
+AuSubsidiary: 37
+#SnippEndpoint: https://uat.snipp.ie/scholasticmigrationtest/member
+#RvaEndpoint: https://rva-qa.scholasticlearningzone.com/users
+RvaEndpoint: https://nonprod.api.scholastic.com/rva_qa/1.0/users
+JadeEndpoint: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+JadeEndpointAus: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerAusWebService/jadehttp.dll?NetsuiteCustomerAusWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+SnippAuthToken: 78ca6121-763c-41c6-8dfe-d73e761b9989;https://uat.snipp.ie/scholasticmigrationtest/member;Thu Jan 07 2016 12:30:35 GMT+0530 (India Standard Time);iboHl0/GC5bkDG0gKexkyi2wgHcaZzKZ9KO3aPJ/n1w=
+InsertCustomerUpdateEndpoint: http://testingpalm.scholastic.com.au:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+#SnippEndpointDynamic: http://uat.snipp.ie/scholasticmigrationtest/member
+SnippAuthTokenPrefixDynamic: https://uat.snipp.ie/scholasticapi/member
+RvaAuthToken: Bearer dfbc42b5e67484ec78acdd5661ee0e8
+Mail:
+  recipient: uat_integration_team@scholastic.onmicrosoft.com
+  from: DoNotReply-IntegrationTeam@scholastic.com
+  #serverUrl: smtp://smtp.gmail.com:587?username=mypoc220@gmail.com&password=Mypoc@220&mail.smtp.auth=true&mail.smtp.starttls.enable=true
+  serverUrl: smtp://ses-relay.scholastic.tech:25
+
+
+---
+spring:
+  profiles: prd
+  activemq:
+    #broker-url: failover:(tcp://is-prod1-activemq1.api.scholastic.com:61616,tcp://is-prod1-activemq2.api.scholastic.com:61616,tcp://is-prod1-activemq3.api.scholastic.com:61616)
+    broker-url: tcp://is-prod1-activemq.api.scholastic.com:61616
+Environment: PRD
+#SnippEndpoint: https://api.snipp.ie/scholastic/member
+#JadeEndpoint: http://scholasticonline.co.nz:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+RvaEndpoint: https://api.scholastic.com/rva-prod-write/1.0/users
+JadeEndpoint: http://scholasticonline.int-rco.scholastic.tech:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer&httpConnectionManager.defaultMaxConnectionsPerHost=10
+JadeEndpointAus: http://scholasticonline.int-rco.scholastic.tech:81/NetsuiteCustomerAusWebService/jadehttp.dll?NetsuiteCustomerAusWebService&serviceName=JadeNetsuiteOrgProvider&httpConnectionManager.defaultMaxConnectionsPerHost=10
+SnippAuthToken: 78ca6121-763c-41c6-8dfe-d73e761b9989;https://api.snipp.ie/scholastic/member;Sun Jan 24 2016 02:38:51 GMT+0530 (India Standard Time);ML66r8M61GdDfz5LVdqctaqhs3Gu2RrvpqqEtyyp2RM=
+#InsertCustomerUpdateEndpoint: http://scholasticonline.co.nz:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer
+InsertCustomerUpdateEndpoint: http://scholasticonline.int-rco.scholastic.tech:81/NetsuiteCustomerWebService/jadehttp.dll?NetsuiteCustomerWebService&serviceName=JadeNetsuiteOrgProvider&listName=NetsuiteCustomer&httpConnectionManager.defaultMaxConnectionsPerHost=10
+#SnippEndpointDynamic: https://api.snipp.ie/scholastic/member
+SnippAuthTokenPrefixDynamic: https://uat.snipp.ie/scholasticapi/member
+RvaAuthToken: Bearer doz61XewqcKK_vgC5M3KLVrMwdga
+AuSubsidiary: 37
+Mail:
+  recipient: Integration_Support.Prod@scholastic.com.au
+  from: DoNotReply-IntegrationTeam@scholastic.com
+  #serverUrl: smtp://smtp.gmail.com:587?username=mypoc220@gmail.com&password=Mypoc@220&mail.smtp.auth=true&mail.smtp.starttls.enable=true
+  serverUrl: smtp://ses-relay.scholastic.tech:25
